@@ -1,4 +1,4 @@
-#import
+#import randomnombre
 text = """Welcome to Kağan's number guessing game! 
 
 I will think of a number between 1 and 100. 
