@@ -1,4 +1,4 @@
-#import randomnombre
+import random
 text = """Welcome to Kağan's number guessing game! 
 
 I will think of a number between 1 and 100. 
@@ -11,7 +11,7 @@ To start, choose your difficulty:
 print(text)
 
 
-def number_guessing():
+def NMGintro():
      while True:  # keep looping until we "break"
         print("So, what level do you want to play at?")
         level_choice = input()
@@ -26,7 +26,12 @@ def number_guessing():
             continue
         
         break
-    
 
+def numberguessing():
+    number = random.randrange(1, 101)
+    guessestaken = 0 
+    print("Now that you've made up your mind on your difficulty I have thought of a number between 1 and 100, take a guess")
+    guess = input()
     
-number_guessing()
+NMGintro()
+numberguessing()
