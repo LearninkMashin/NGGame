@@ -69,16 +69,15 @@ def ask_yes_no(prompt):
 def main():
     rounds = 0
     wins = 0
-    result = numberguessing(tries)
-    rounds += 1
-    if result:
-        wins += 1
-
 
     print(introtext)
+
     tries = NMGdifficulty()
     while True:
-        numberguessing(tries)
+        result = numberguessing(tries)
+        rounds += 1
+        if result:
+            wins += 1
         if not ask_yes_no("Play again? (y/n): "):
             break
         if not ask_yes_no("Keep the same difficulty? (y/n): "):
