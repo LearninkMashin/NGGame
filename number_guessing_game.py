@@ -110,11 +110,16 @@ def main():
         if won:
             key = tries_to_key[tries]  # which difficulty?
             best = high_scores[key]    # current best for that difficulty
-            if best is None or attempts < best:
+            if (
+                best is None
+                or attempts < best[0]
+                or (attempts == best[0] and elapsed < best[1])
+            ):
+
                 high_scores[key] = (attempts, elapsed)
-                print(f"🏆 New high score on difficulty {key}: {attempts} guesses in {elapsed:.2f} seconds!")
+                print(f"\n🏆 New high score on difficulty {key}: {attempts} guesses in {elapsed:.2f} seconds!")
             else:
-                print(f"Current high score on difficulty {key} is {best} guesses in {best[1]:.2f} seconds.")
+                print(f"\nCurrent high score on difficulty {key} is {best[0]} guesses in {best[1]:.2f} seconds.")
 
         if not ask_yes_no("Play again? (y/n): "):
             break
@@ -122,7 +127,7 @@ def main():
             tries = NMGdifficulty()
 
     print(f"\nThanks for playing! You won {wins} out of {rounds} rounds.")
-    print("High scores (fewest guesses + time):")
+    print("\nHigh scores (fewest guesses + time):")
     labels = {"1": "Easy", "2": "Medium", "3": "Hard"}
     for k in ("1", "2", "3"):
         best = high_scores[k]
