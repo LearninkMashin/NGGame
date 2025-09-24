@@ -68,11 +68,11 @@ def numberguessing(tries):
 
         if guess == number:
             print(f"\n🎉 Correct! The number was {number}. You did it in {attempt} guesses.")
-            return True
+            return True, attempt
         print("Too low!" if guess < number else "Too high!")
 
     print(f"\nToo bad! The number was {number}. Better luck next time.")
-    return False
+    return False, tries
 
 
 def ask_yes_no(prompt):
@@ -87,28 +87,49 @@ def ask_yes_no(prompt):
 def main():
     rounds = 0
     wins = 0
+    
+    high_scores = {"1": None, "2": None, "3": None}
+    tries_to_key = {10: "1", 5: "2", 3: "3"}
+
 
     print(introtext)
 
     tries = NMGdifficulty()
     while True:
         start = time.time()                
-        result = numberguessing(tries)
+        won, attempts = numberguessing(tries)
         elapsed = time.time() - start      
 
         print(f"You spent {elapsed:.2f} seconds this round.")
 
 
         rounds += 1
-        if result:
+        if won:
             wins += 1
+    
+        if won:
+            key = tries_to_key[tries]  # which difficulty?
+            best = high_scores[key]    # current best for that difficulty
+            if best is None or attempts < best:
+                high_scores[key] = (attempts, elapsed)
+                print(f"🏆 New high score on difficulty {key}: {attempts} guesses in {elapsed:.2f} seconds!")
+            else:
+                print(f"Current high score on difficulty {key} is {best} guesses in {best[1]:.2f} seconds.")
+
         if not ask_yes_no("Play again? (y/n): "):
             break
         if not ask_yes_no("Keep the same difficulty? (y/n): "):
             tries = NMGdifficulty()
-    
-    
+
     print(f"\nThanks for playing! You won {wins} out of {rounds} rounds.")
+    print("High scores (fewest guesses + time):")
+    labels = {"1": "Easy", "2": "Medium", "3": "Hard"}
+    for k in ("1", "2", "3"):
+        best = high_scores[k]
+        if best is None:
+            print(f"  {labels[k]}: —")
+        else:
+            print(f"  {labels[k]}: {best[0]} guesses in {best[1]:.2f} seconds")
 
   
 
