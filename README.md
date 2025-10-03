@@ -1,5 +1,7 @@
 # Number Guessing Game 🎲
 
+(This project is complete and archived. No further updates will be made.)
+
 A CLI number guessing game written in Python and stored and done in Git.
 
 ## Rules
@@ -24,7 +26,4 @@ Make sure you have Python installed (>=3.7).
 
 Run the game (in CLI):
 ```bash
-
-This project is complete and archived. No further updates will be made.
-
 python number_guessing_game.py
