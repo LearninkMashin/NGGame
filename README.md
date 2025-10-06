@@ -1,8 +1,10 @@
-# Number Guessing Game 🎲 https://roadmap.sh/projects/number-guessing-game
+# Number Guessing Game 🎲 
 
 (This project is complete and archived. No further updates will be made.)
 
 A CLI number guessing game written in Python and stored and done in Git.
+
+project URL: https://roadmap.sh/projects/number-guessing-game
 
 ## Rules
 - The computer randomly selects a number between 1 and 100.
