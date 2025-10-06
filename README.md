@@ -1,4 +1,4 @@
-# Number Guessing Game 🎲
+# Number Guessing Game 🎲 https://roadmap.sh/projects/number-guessing-game
 
 (This project is complete and archived. No further updates will be made.)
 
@@ -27,3 +27,4 @@ Make sure you have Python installed (>=3.7).
 Run the game (in CLI):
 ```bash
 python number_guessing_game.py
+
